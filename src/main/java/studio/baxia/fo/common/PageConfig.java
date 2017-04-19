@@ -46,7 +46,7 @@ public class PageConfig {
     }
 
     public Integer getPageIndex() {
-        return (this.pageNumber - 1) * this.pageSize;
+        return pageIndex;
     }
 
     public void setPageIndex(Integer pageIndex) {

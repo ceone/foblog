@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50631
 File Encoding         : 65001
 
-Date: 2016-11-02 20:22:51
+Date: 2016-10-16 22:15:49
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -39,15 +39,16 @@ DROP TABLE IF EXISTS `t_article`;
 CREATE TABLE `t_article` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `title` varchar(70) NOT NULL COMMENT '标题',
-  `summary` varchar(600) DEFAULT NULL COMMENT '概要',
-  `content` text COMMENT '内容',
-  `category_ids` varchar(20) DEFAULT NULL COMMENT '类别id,多个,用/分开',
-  `tag_ids` varchar(20) DEFAULT NULL COMMENT '标签id,多个,用,分开',
+  `summary` varchar(600) NOT NULL COMMENT '概要',
+  `content` text NOT NULL COMMENT '内容',
+  `category_ids` varchar(20) NOT NULL COMMENT '类别id,多个,用/分开',
+  `tag_ids` varchar(20) DEFAULT NULL COMMENT '标签id,多个,用/分开',
+  `author_id` int(10) NOT NULL COMMENT '作者id',
   `status` int(1) NOT NULL COMMENT '文章状态：0-草稿，1-博文',
   `write_time` datetime DEFAULT NULL COMMENT '撰写时间',
   `pub_time` datetime DEFAULT NULL COMMENT '发布时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_article
@@ -84,8 +85,9 @@ CREATE TABLE `t_category` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `parent_id` int(10) DEFAULT NULL COMMENT '父类别id',
   `name` varchar(30) NOT NULL COMMENT '名称',
+  `author_id` int(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_category
@@ -155,28 +157,10 @@ DROP TABLE IF EXISTS `t_tag`;
 CREATE TABLE `t_tag` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `name` varchar(20) NOT NULL COMMENT '标签名称',
+  `author_id` int(10) DEFAULT NULL COMMENT '作者id',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of t_tag
 -- ----------------------------
-
--- ----------------------------
--- Table structure for `t_friend_link`
--- ----------------------------
-DROP TABLE IF EXISTS `t_friend_link`;
-CREATE TABLE `t_friend_link` (
-  `id` int(10) NOT NULL,
-  `title` varchar(70) NOT NULL COMMENT '标题',
-  `summary` varchar(100) DEFAULT NULL COMMENT '简介',
-  `counts` int(10) DEFAULT '0' COMMENT '点击次数',
-  `type` int(5) DEFAULT '0' COMMENT '所属类型（记录改网站所属类型，可用于后期扩展）',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of t_friend_link
--- ----------------------------
-
-

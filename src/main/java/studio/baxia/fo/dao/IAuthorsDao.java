@@ -46,7 +46,6 @@ public interface IAuthorsDao {
      * @param userStatus 作者账户状态
      */
     void updateAuthorsStatus(@Param("id") Integer authorsId, @Param("userStatus")Integer userStatus);
-	int update(Authors info);
 
 
 

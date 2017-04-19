@@ -2,9 +2,7 @@ package studio.baxia.fo.dao;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
-
 import studio.baxia.fo.pojo.Tag;
-import studio.baxia.fo.vo.TagVo;
 
 import java.util.List;
 
@@ -15,7 +13,7 @@ import java.util.List;
 public interface ITagDao {
     /**
      * 插入标签
-     * @param tag 标签（name）
+     * @param tag 标签（name,authorId）
      * @return 受影响的行
      */
     Integer insert(Tag tag);
@@ -25,30 +23,20 @@ public interface ITagDao {
      * @param tagId 标签id
      * @return 受影响的行
      */
-    Integer delete(@Param("id")Integer tagId);
+    Integer delete(@Param("id")Integer tagId,@Param("authorId")Integer tagAuthorId);
 
     /**
-     * 查找所有标签
+     * 查找作者的所有标签
+     * @param tagAuthorId 作者id
      * @return List<Tag>
      */
-    List<Tag> selectBy();
+    List<Tag> selectBy(@Param("authorId")Integer tagAuthorId);
 
     /**
      * 通过id查找标签
      * @param tagId 标签id
+     * @param tagAuthorId 标签作者id
      * @return Tag
      */
-    Tag selectById(@Param("id")Integer tagId);
-    /**
-     * 通过name查找标签
-     * @param tagName 标签名
-     * @return Tag
-     */
-	Tag selectByName(@Param("name")String tagName);
-
-	List<TagVo> selectVoBy(@Param("articleStatus")Integer articleStatus);
-
-	List<Tag> selectByIds(@Param("ids")List<Integer> tagIdList);
-
-	Integer update(Tag tag);
+    Tag selectById(@Param("id")Integer tagId,@Param("authorId")Integer tagAuthorId);
 }

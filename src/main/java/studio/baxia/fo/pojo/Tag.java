@@ -1,39 +1,44 @@
 package studio.baxia.fo.pojo;
 
 /**
- * Created by FirePan on 2016/10/11. 文章标签实体信息.
+ * Created by FirePan on 2016/10/11.
+ * 文章标签实体信息.
  */
 public class Tag {
-	private Integer id;
-	private String name; // 标签名称
+    private Integer id;
+    private String name; //标签名称
+    private Integer authorId;//作者id
 
-	public Tag() {
-		super();
-	}
+    @Override
+    public String toString() {
+        return "Tag{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", authorId=" + authorId +
+                '}';
+    }
 
-	public Tag(String name) {
-		this.name = name;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	@Override
-	public String toString() {
-		return "Tag [id=" + id + ", name=" + name + "]";
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public Integer getId() {
-		return id;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public Integer getAuthorId() {
+        return authorId;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
+    public void setAuthorId(Integer authorId) {
+        this.authorId = authorId;
+    }
 }

@@ -1,6 +1,6 @@
 package studio.baxia.fo.pojo;
 
-import org.hibernate.validator.constraints.NotEmpty;
+import studio.baxia.fo.common.Constant;
 import studio.baxia.fo.common.TreeInfo;
 
 /**
@@ -10,24 +10,34 @@ import studio.baxia.fo.common.TreeInfo;
  */
 public class Category extends TreeInfo {
     private Integer id;
-    @NotEmpty(message = "名称不能为空")
+    private Integer parentId = Constant.CATEGORY_DEFAULT_PARENT_ID;//父类别id
     private String name;//名称
-    @NotEmpty(message = "描述不能为空")
-    private String description;
-    private String code;
-    /**
-     * 类别状态
-     */
-    private boolean status;
+    private Integer authorId; //作者id
 
     @Override
+    public String toString() {
+        return "Category{" +
+                "id=" + id +
+                ", parentId='" + parentId + '\'' +
+                ", name='" + name + '\'' +
+                ", authorId=" + authorId +
+                '}';
+    }
+
     public Integer getId() {
         return id;
     }
 
-    @Override
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(Integer parentId) {
+        this.parentId = parentId;
     }
 
     public String getName() {
@@ -38,27 +48,11 @@ public class Category extends TreeInfo {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public Integer getAuthorId() {
+        return authorId;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
+    public void setAuthorId(Integer authorId) {
+        this.authorId = authorId;
     }
 }

@@ -1,11 +1,8 @@
 package studio.baxia.fo.service;
 
 import studio.baxia.fo.pojo.Authors;
-import studio.baxia.fo.vo.AuthorVo;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by FirePan on 2016/10/11.
@@ -78,27 +75,4 @@ public interface IUserService {
      */
     List<Authors> authorsGetList(Integer pageIndex ,Integer pageSize,Integer authorsUserStatus);
 
-    /**
-     * 登录检查
-     * @param authorVo
-     * @param request
-     * @return token
-     * @throws Exception 
-     */
-	String signInCheck(AuthorVo authorVo, HttpServletRequest request);
-
-	Map<String, Object> generateKeypair(HttpServletRequest request);
-
-	Authors getInfo(HttpServletRequest request);
-
-	Boolean updateInfo(HttpServletRequest request, Authors info);
-
-    /**
-     * 获取网站作者信息
-     * @param authorId
-     * @return
-     */
-    Authors getAuthor(int authorId);
-
-    void signOut(HttpServletRequest request);
 }

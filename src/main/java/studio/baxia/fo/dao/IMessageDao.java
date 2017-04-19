@@ -3,7 +3,6 @@ package studio.baxia.fo.dao;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 import studio.baxia.fo.pojo.Message;
-import studio.baxia.fo.vo.ArticleMessageVo;
 
 import java.util.List;
 
@@ -65,6 +64,4 @@ public interface IMessageDao {
 
     public Integer selectCountBy(@Param("parentId")Integer messageParentId,@Param("blockId")Integer messageBlockId);
 
-
-    public List<ArticleMessageVo> selectArticleMessageVo(@Param("articleId") Integer messageArticleId,@Param("reverseOrder")Integer reverseOrder);
 }
